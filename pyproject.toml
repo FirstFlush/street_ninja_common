@@ -4,12 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "street-ninja-common"
-version = "1.0.0"
+version = "1.0.2"
 description = "Shared utilities for Street Ninja ecosystem"
 requires-python = ">=3.10"
 dependencies = [
-    "Django>=4.0.0",
-    "django-redis==5.4.0"
+    "colorlog>=6.9.0,<7.0.0",
+    "Django>=4.0.0,<6.0.0",
+    "django-redis>=5.4.0,<6.0.0"
 ]
 
 [tool.setuptools.packages.find]
