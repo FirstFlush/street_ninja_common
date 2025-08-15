@@ -11,5 +11,5 @@ Street Ninja is a SMS service that helps homeless people in Vancouver find nearb
 ## Installation
 
 ```bash
-pip install git+https://github.com/street-ninja-org/street-ninja-common.git@v1.0.0
+pip install git+https://github.com/street-ninja-org/street-ninja-common.git
 ```
