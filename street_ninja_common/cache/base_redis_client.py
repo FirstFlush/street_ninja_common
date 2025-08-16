@@ -44,7 +44,7 @@ class BaseRedisClient(ABC):
         else:
             raise RedisClientException(f"Invalid redis key type: `{type(redis_key)}`")
         
-    def _get_cached_data(self, redis_key: RedisKeyEnum, raise_error: bool = False) -> Any | None:
+    def _get_cached_data(self, redis_key: str, raise_error: bool = False) -> Any | None:
         """
         Retrieve cached data from Redis.
 
@@ -55,10 +55,10 @@ class BaseRedisClient(ABC):
             - Cache hit or miss.
             - Errors when fetching data from Redis.
         """
-        redis_key = self._validate_key_type(redis_key)
+        # redis_key = self._validate_key_type(redis_key)
 
         try:
-            cached_data = self.redis_store.get(redis_key.value)
+            cached_data = self.redis_store.get(redis_key)
             if cached_data:
                 logger.debug(f"Cache hit for key: {redis_key}")
                 return (
