@@ -74,10 +74,11 @@ class BaseCacheClient(ABC, Generic[T]):
             
         return data
     
-    def _decode(self, data: bytes, strategy: EncodingStrategy) -> T:
+    def _decode(self, data: bytes, access_pattern: BaseCacheAccessPattern, strategy: EncodingStrategy) -> T:
         match strategy:
             case EncodingStrategy.JSON:
-                result = DataEncoder.deserialize(data)
+                deserialized = DataEncoder.deserialize(data)
+                result = access_pattern.value_type(**deserialized)
             case EncodingStrategy.PICKLE:
                 result = DataEncoder.unpickle(data)
             case _:

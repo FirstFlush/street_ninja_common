@@ -29,7 +29,7 @@ class CacheClient(BaseCacheClient[T]):
         if self.circuit_breaker.allow_request:
             cached_data = self._get(access_pattern, **kwargs)
             if cached_data is not None:
-                return self._decode(cached_data, EncodingStrategy.JSON)
+                return self._decode(cached_data, access_pattern, EncodingStrategy.JSON)
         else:
             logger.critical("Cache circuit breaker open. Can not read from cache")
         return None

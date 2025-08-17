@@ -66,5 +66,5 @@ class CacheClientDB(BaseCacheClient[T]):
     def _get_from_cache(self, access_pattern, **kwargs) -> T | None:
         cached_data = self._get(access_pattern, **kwargs)
         if cached_data is not None:
-            return self._decode(cached_data, EncodingStrategy.PICKLE)
+            return self._decode(cached_data, access_pattern, EncodingStrategy.PICKLE)
         return None

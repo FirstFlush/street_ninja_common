@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any, Callable, Type
 from .enums import CacheStoreEnum, Seconds, CacheKey
 
 
@@ -10,6 +10,7 @@ class BaseCacheAccessPattern(ABC):
     store: CacheStoreEnum
     ttl: Seconds
     _key_enum: CacheKey
+    value_type: Type[Any]
     version: int = field(default=1, init=False)
 
     @abstractmethod
