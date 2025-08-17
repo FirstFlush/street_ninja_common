@@ -1,3 +1,4 @@
+from dataclasses import asdict
 import json
 import logging
 import pickle
@@ -14,7 +15,7 @@ class DataEncoder:
     @staticmethod
     def serialize(value: Any) -> bytes:
         try:
-            return json.dumps(value).encode('utf-8')    
+            return json.dumps(asdict(value)).encode('utf-8')    
         except TypeError as e:
             msg = f"Cannot serialize {type(value)} to JSON: {e}"
             logger.error(msg, exc_info=True)
