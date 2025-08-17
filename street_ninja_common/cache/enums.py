@@ -1,24 +1,30 @@
 from ..enums import StreetNinjaEnum
 
 
-class RedisStoreEnum(StreetNinjaEnum):
-    DEFAULT = "default"
-    SESSION = "session"
-    PHONE_SESSION = "phone_session"
-    RESOURCES = "resources"
-    CELERY = "celery"
-    GEO = "geo"
+class BaseStoreEnum(StreetNinjaEnum):
     TESTS = "tests"
-    GATE = "gate"
 
 
-class RedisKeyEnum(StreetNinjaEnum): 
+
+# class RedisStoreEnum(StreetNinjaEnum):
+#     DEFAULT = "default"
+#     SESSION = "session"
+#     PHONE_SESSION = "phone_session"
+#     RESOURCES = "resources"
+#     CELERY = "celery"
+#     GEO = "geo"
+#     TESTS = "tests"
+#     GATE = "gate"
+
+
+class CacheKey(StreetNinjaEnum):
     ...
 
 
-class RedisKeyTTL(StreetNinjaEnum):
+class Seconds(StreetNinjaEnum):
     """TTL for resource data in redis cache in seconds"""
    
+    MINUTE_HALF = 30
     MINUTE = 60
     MINUTES_FIFTEEN = 60 * 15
     MINUTES_THIRTY = 60 * 30
@@ -33,3 +39,10 @@ class RedisKeyTTL(StreetNinjaEnum):
     WEEK = 60 * 60 * 24 * 7
     DAYS_THIRTY = 60 * 60 * 24 * 30
     DAYS_NINETY = 60 * 60 * 24 * 90
+    
+
+class EncodingStrategy(StreetNinjaEnum):
+    
+    JSON = "json"
+    PICKLE = "pickle"
+    RAW = "raw"
