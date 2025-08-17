@@ -1,20 +1,20 @@
 from ..enums import StreetNinjaEnum
 
 
-class BaseStoreEnum(StreetNinjaEnum):
-    TESTS = "tests"
-
-
-
-# class RedisStoreEnum(StreetNinjaEnum):
-#     DEFAULT = "default"
-#     SESSION = "session"
-#     PHONE_SESSION = "phone_session"
-#     RESOURCES = "resources"
-#     CELERY = "celery"
-#     GEO = "geo"
+# class BaseStoreEnum(StreetNinjaEnum):
 #     TESTS = "tests"
-#     GATE = "gate"
+
+
+
+class CacheStoreEnum(StreetNinjaEnum):
+    DEFAULT = "default"
+    SESSION = "session"
+    PHONE_SESSION = "phone_session"
+    RESOURCES = "resources"
+    CELERY = "celery"
+    GEO = "geo"
+    TESTS = "tests"
+    GATE = "gate"
 
 
 class CacheKey(StreetNinjaEnum):
@@ -45,4 +45,3 @@ class EncodingStrategy(StreetNinjaEnum):
     
     JSON = "json"
     PICKLE = "pickle"
-    RAW = "raw"

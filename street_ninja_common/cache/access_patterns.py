@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Callable
-from .enums import BaseStoreEnum, Seconds, CacheKey
+from .enums import CacheStoreEnum, Seconds, CacheKey
 
 
 @dataclass(frozen=True)
 class BaseCacheAccessPattern(ABC):
 
-    store: BaseStoreEnum
+    store: CacheStoreEnum
     ttl: Seconds
     _key_enum: CacheKey
     version: int = field(default=1, init=False)
@@ -21,4 +21,4 @@ class BaseCacheAccessPattern(ABC):
 class AccessPatternDB(BaseCacheAccessPattern):
 
     query: Callable
-    params: dict[str, Any] = field(default={})
+    params: dict[str, Any] = field(default_factory=dict)
